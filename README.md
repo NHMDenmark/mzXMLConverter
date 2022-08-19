@@ -27,7 +27,7 @@ Then distribute the content from the dist directory.
 
 ## Usage of the script
 Start by downloading the release package for your operating system
-from [Releases](https://github.com/NHMDenmark/mzXMLConverter/releases)
+from [Releases](https://github.com/NHMDenmark/mzXMLConverter/releases).
 Then unpack it somewhere appropriate on your computer.
 
 ### MacOS
