@@ -59,9 +59,10 @@ def main():
                     df = prepare_dataframe(next_item["m/z array"], next_item["intensity array"])
                     #print(df.head())
 
-                    # TODO: Write CSV file with TAB as separator
+                    # Write CSV file with TAB as separator
                     outpath = Path(args["output"]).joinpath(Path(Path(inputfilename).name).stem +  "_Files" + str(counter) + ".txt")
                     print(str(outpath))
+                    # TODO: Remember to write out float numbers with 6 decimals
                     df.to_csv(str(outpath), sep="\t", header=False, index=False)
 
                     counter += 1
