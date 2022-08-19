@@ -27,15 +27,18 @@ Then distribute the content from the dist directory.
 
 ## Usage of the script
 Start by downloading the release package for your operating system
-and unpack it somewhere appropriate on your computer.
+from [Releases](https://github.com/NHMDenmark/mzXMLConverter/releases)
+Then unpack it somewhere appropriate on your computer.
 
 ### MacOS
 Open a terminal window and start by executing the command
 ```shell
-export PATH=$PATH:/your_path_to/mzxmlconverter
+export PATH=$PATH:/your_path_to/mzxmlconverter/
 ```
 Now you can execute the program in the same terminal window by
 ```shell
 mzxmlconverter -i path_to_file.mzXML -o path_to_output_directory
 ```
 
+### Windows
+TODO
