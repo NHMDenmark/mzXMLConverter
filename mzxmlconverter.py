@@ -18,24 +18,31 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 """
-
 import argparse
-from pyteomics import mzxml  #, auxiliary
+from pyteomics import mzxml
 import pandas as pd
 from pathlib import Path
 
+__version__ = "1.0.0"
 
 def prepare_dataframe(mz_list, intensity_list):
+    """Define a dataframe to store data from the mzXML file.
+
+        mz_list: A list containing the m/z values
+        intensity_list: A list containing the intensity values
+        Return: A pandas DataFrame containing the data
+    """
     record = pd.DataFrame({
         "m/z": mz_list,
         "intensity": intensity_list
     })
     return record
 
+
 def main():
     """The main function of this script."""
     # construct the argument parser and parse the arguments
-    ap = argparse.ArgumentParser(description="Convert mzXML files to simple two column text files.")
+    ap = argparse.ArgumentParser(description="Convert mzXML files to simple two column text files.\n Version " + __version__)
     ap.add_argument("-i", "--input", required=True, action="extend", nargs="+", type=str,
                     help="file name for and path to input image")
     ap.add_argument("-o", "--output", required=False, default="output",
@@ -45,32 +52,39 @@ def main():
 
     args = vars(ap.parse_args())
 
+    # Check if output path exists, otherwise create it
+    if not Path(args["output"]).exists():
+        if args["verbose"]:
+            print("creating output directory " + args["output"])
+
+        Path(args["output"]).mkdir(parents=True)
 
     # Loop over a list of images
     for inputfilename in args["input"]:
+        print()
+        print("Processing " + inputfilename)
+
         with mzxml.read(inputfilename) as reader:
             try:
                 counter = 0
-                while True: # Loop over all items in the mzXML file
+                while True:  # Loop over all items in the mzXML file
                     next_item = next(reader)
-                    #auxiliary.print_tree(next_item)
 
                     # Prepare Pandas dataframe for output
                     df = prepare_dataframe(next_item["m/z array"], next_item["intensity array"])
-                    #print(df.head())
 
                     # Write CSV file with TAB as separator
-                    outpath = Path(args["output"]).joinpath(Path(Path(inputfilename).name).stem +  "_Files" + str(counter) + ".txt")
+                    outpath = Path(args["output"]).joinpath(Path(Path(inputfilename).name).stem
+                                                            + "_Files" + str(counter) + ".txt")
                     print(str(outpath))
-                    # TODO: Remember to write out float numbers with 6 decimals
-                    df.to_csv(str(outpath), sep="\t", header=False, index=False)
+                    # Write out float numbers with 6 decimals
+                    df.to_csv(str(outpath), sep="\t", header=False, index=False, float_format='%.6f')
 
                     counter += 1
             except StopIteration:
-                print("End of file")
+                if args["verbose"]:
+                    print("End of file")
 
 
 if __name__ == '__main__':
     main()
-
-
