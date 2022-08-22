@@ -1,8 +1,8 @@
-numpy
-matplotlib
+numpy>=1.23.2
+matplotlib>=3.5.3
 lxml>=4.9.1
 pandas>=1.4.3
-sqlalchemy
-pynumpress
+sqlalchemy>=1.4.40
+pynumpress>=0.0.6
 pyteomics>=4.5.4
 pyinstaller>=5.3
