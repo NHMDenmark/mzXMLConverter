@@ -41,4 +41,7 @@ mzxmlconverter -i path_to_file.mzXML -o path_to_output_directory
 ```
 
 ### Windows
-TODO
+
+```shell
+pyinstaller mzxmlconverter.py --console --onefile
+```
