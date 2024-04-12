@@ -7,3 +7,12 @@ the .ui files. These needs to be converted to python modules by
 pyuic5 -o ui_selector.py selector.ui
 pyuic5 -o ui_progressbardialog.py progressbardialog.ui
 ```
+
+
+Check out
+https://www.riverbankcomputing.com/static/Docs/PyQt5/designer.html
+https://www.tutorialspoint.com/pyqt/pyqt_qfiledialog_widget.htm
+https://doc.qt.io/qt-5/qfiledialog.html
+https://doc.qt.io/qt-5/qabstractbutton.html#clicked
+https://www.pythonguis.com/tutorials/multithreading-pyqt-applications-qthreadpool/
+https://www.pythonguis.com/pyqt5-tutorial/
