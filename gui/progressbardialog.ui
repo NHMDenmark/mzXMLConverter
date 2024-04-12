@@ -87,5 +87,21 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>clicked(QAbstractButton*)</signal>
+   <receiver>ProgressbarDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>200</x>
+     <y>164</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>196</x>
+     <y>102</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
 </ui>
