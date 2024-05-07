@@ -59,7 +59,7 @@ def main():
 
         Path(args["output"]).mkdir(parents=True)
 
-    # Loop over a list of images
+    # Loop over a list of files
     for inputfilename in args["input"]:
         print()
         print("Processing " + inputfilename)

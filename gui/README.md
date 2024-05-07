@@ -8,6 +8,11 @@ pyuic5 -o ui_selector.py selector.ui
 pyuic5 -o ui_progressbardialog.py progressbardialog.ui
 ```
 
+```shell
+pyuic6 mainwindow.ui -o ui_mainwindow.py
+pyuic6 progressbardialog.ui -o ui_progressbardialog.py 
+```
+
 
 Check out
 https://www.riverbankcomputing.com/static/Docs/PyQt5/designer.html

@@ -1,6 +1,8 @@
 
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import pyqtSlot, pyqtSignal
+#from PyQt5 import QtCore, QtGui, QtWidgets
+#from PyQt5.QtCore import pyqtSlot, pyqtSignal
+from PyQt6 import QtCore, QtGui, QtWidgets
+from PyQt6.QtCore import pyqtSlot, pyqtSignal
 import ui_progressbardialog
 import selector
 from pyteomics import mzxml
@@ -147,12 +149,14 @@ class Responder(QtCore.QObject):
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    selector_dialog = selector.Selector()
-    selector_dialog.show() # Show the selector dialog
+    #app = QtGui.QGuiApplication(sys.argv)
+    selector = selector.Selector()
+    selector.show() # Show the selector main window
 
     progress = Progress()
-    respond = Responder(selector_dialog, progress)
-    selector_dialog.accepted.connect(respond.handle_accept)
+    respond = Responder(selector, progress)
+    #selector.accepted.connect(respond.handle_accept)
 
     
-    sys.exit(app.exec_())
+    #sys.exit(app.exec_())
+    sys.exit(app.exec())
